@@ -1,8 +1,8 @@
-from crawl import safe_get_html   #get html foreach link
-from parse_html import get_urls_html #return an array of links that found within page
+from crawlers.crawl import safe_get_html   #get html foreach link
+from html_parsing.parse_html import get_urls_html #return an array of links that found within page
 from urllib.parse import urlparse
-from crawl import normalize_url
-from extract_page import extract_page_data
+from crawlers.crawl import normalize_url
+from html_parsing.extract_page import extract_page_data
 def crawlpage(baseurl:str,current_url=None,pages=None):
     if current_url==None:
         current_url=baseurl
@@ -33,7 +33,7 @@ def crawlpage(baseurl:str,current_url=None,pages=None):
     
     for link in nex_links:
         pages=crawlpage(baseurl,link,pages)
-    print(pages)  # the pages thats scraped
+    return pages  # the pages thats scraped
 
 
        
